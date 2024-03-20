@@ -1,11 +1,11 @@
 return {
   {
     "catppuccin/nvim",
-    enabled = false,
+    enabled = true,
     lazy = true,
     name = "catppuccin",
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       integrations = {
         aerial = true,
         alpha = true,
