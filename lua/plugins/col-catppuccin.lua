@@ -41,11 +41,5 @@ return {
         which_key = true,
       },
     },
-  }, -- and this
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
   },
 }
