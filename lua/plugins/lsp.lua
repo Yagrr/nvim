@@ -24,7 +24,8 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
-        "jedi_language_server",
+        "pylsp",
+        "r_language_server",
         "clangd",
         "tsserver",
         "html",
