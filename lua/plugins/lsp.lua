@@ -23,14 +23,15 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
+        "html",
+        "cssls",
         "lua_ls",
         "pylsp",
         "r_language_server",
         "clangd",
         "tsserver",
-        "html",
-        "cssls",
       },
+
       handlers = {
         function(server_name) -- default handler (optional)
           require("lspconfig")[server_name].setup({
@@ -53,6 +54,8 @@ return {
         end,
       },
     })
+
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
