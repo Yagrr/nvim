@@ -34,3 +34,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+-- Disable snacks animation
+vim.g.snacks_animate = false
+
+-- LSP
