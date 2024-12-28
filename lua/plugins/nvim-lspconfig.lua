@@ -24,6 +24,7 @@ return {
         lua_ls = {},
         pyright = {},
         ruff = {},
+        ruff_lsp = {},
       },
     },
 
