@@ -38,5 +38,9 @@ vim.g.mapleader = " "
 -- Disable snacks animation
 vim.g.snacks_animate = false
 
+-- Code Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Molten.nvim
 vim.g.python3_host_prog = vim.fn.expand("/home/sirtas/miniconda3/envs/ds-py/bin/python")
