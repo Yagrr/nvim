@@ -1,13 +1,5 @@
 return {
   {
-    "goerz/jupytext.vim",
-    enabled = true,
-    init = function()
-      -- will use `# %%` to define cells
-      vim.g.jupytext_fmt = "py:percent"
-    end,
-  },
-  {
     "jpalardy/vim-slime",
     enabled = true,
     init = function()
@@ -16,9 +8,8 @@ return {
       vim.g.slime_cell_delimiter = "\\s*#\\s*%%"
       vim.g.slime_paste_file = os.getenv("HOME") .. "/.slime_paste"
 
-      local function next_cell()
-        vim.fn.search(vim.g.slime_cell_delimiter)
-      end
+      vim.fn.search(vim.g.slime_cell_delimiter)
+      local function next_cell() end
 
       local function prev_cell()
         vim.fn.search(vim.g.slime_cell_delimiter, "b")
@@ -29,7 +20,7 @@ return {
       vim.keymap.set("x", "<leader>ce", "<Plug>SlimeRegionSend", { noremap = true, desc = "send line to tmux" })
       vim.keymap.set(
         "n",
-        "<leader>cp",
+        "<leader>cep",
         "<Plug>SlimeParagraphSend",
         { noremap = true, desc = "Send Paragraph with Slime" }
       )
