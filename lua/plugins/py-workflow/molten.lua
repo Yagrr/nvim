@@ -10,6 +10,11 @@ return {
       vim.g.molten_image_provider = "image.nvim"
       vim.g.molten_output_win_max_height = 20
 
+      -- Setting venv
+      vim.g.python3_host_prog = vim.fn.expand("/home/sirtas/miniconda3/envs/ds-py/bin/python")
+
+      -- Keybindings
+
       --vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
       --vim.keymap.set(
       --  "n",
