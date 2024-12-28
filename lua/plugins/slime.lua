@@ -64,6 +64,7 @@ return {
       end
 
       local function slime_use_tmux()
+        vim.b.slime_config = nil
         vim.g.slime_target = "tmux"
         vim.g.slime_bracketed_paste = 1
         vim.g.slime_python_ipython = 0
@@ -73,6 +74,7 @@ return {
       end
 
       local function slime_use_neovim()
+        vim.b.slime_config = nil
         vim.g.slime_target = "neovim"
         vim.g.slime_bracketed_paste = 1
         vim.g.slime_python_ipython = 1
@@ -82,7 +84,18 @@ return {
         -- vim.g.slime_dont_ask_default = 0
       end
 
-      slime_use_neovim()
+      vim.api.nvim_create_user_command("SlimeTarget", function(opts)
+        vim.b.slime_config = nil
+        if opts.args == "tmux" then
+          slime_use_tmux()
+        elseif opts.args == "neovim" then
+          slime_use_neovim()
+        else
+          vim.g.slime_target = opts.args
+        end
+      end, { desc = "Change Slime target", nargs = "*" })
+
+      -- slime_use_neovim()
       -- slime_use_tmux()
       -- }}
     end,
