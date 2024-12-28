@@ -41,3 +41,4 @@ vim.g.snacks_animate = false
 -- Code Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
