@@ -39,6 +39,6 @@ vim.g.mapleader = " "
 vim.g.snacks_animate = false
 
 -- Code Folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vim.o.foldlevel = 20
+-- Opens all folds when opening file
+vim.o.foldlevelstart = 99
