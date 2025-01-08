@@ -17,11 +17,6 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
@@ -42,3 +37,19 @@ vim.g.snacks_animate = false
 vim.o.foldlevel = 20
 -- Opens all folds when opening file
 vim.o.foldlevelstart = 99
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  -- WINDOWS ONLY: setting undodir
+  vim.opt.undodir = os.getenv("USERPROFILE") .. "/.vim/undodir"
+else
+  vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+end
+
+-- WINDOWS ONLY: settings Windows shell
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  vim.o.shell = "C:\\WINDOWS\\system32\\cmd.exe"
+end
