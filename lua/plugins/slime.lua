@@ -58,13 +58,14 @@ return {
         vim.g.slime_bracketed_paste = 1
         vim.g.slime_python_ipython = 0
         vim.g.slime_no_mappings = 1
+        -- Can check target_pane using tmux list-panes -a
         vim.g.slime_default_config = { socket_name = "default", target_pane = ":.2" }
         vim.g.slime_dont_ask_default = 1
       end
 
       local function slime_use_neovim()
         vim.b.slime_config = nil
-        vim.g.slime_target = "kitty"
+        vim.g.slime_target = "neovim"
         vim.g.slime_bracketed_paste = 1
         vim.g.slime_python_ipython = 1
         vim.g.slime_no_mappings = 1
@@ -84,12 +85,10 @@ return {
         end
       end, { desc = "Change Slime target", nargs = "*" })
 
-      slime_use_neovim()
-
       -- Keybinds
       vim.keymap.set("n", "<leader>ce", vim.cmd.SlimeSend, { noremap = true, desc = "send line to term" })
       vim.keymap.set("n", "<leader>cv", vim.cmd.SlimeConfig, { noremap = true, desc = "Open slime configuration" })
-      vim.keymap.set("x", "<leader>ce", "<Plug>SlimeRegionSend", { noremap = true, desc = "send line to tmux" })
+      vim.keymap.set("x", "<leader>cc", "<Plug>SlimeRegionSend", { noremap = true, desc = "send line to tmux" })
       vim.keymap.set(
         "n",
         "<leader>cep",
@@ -105,7 +104,7 @@ return {
       vim.keymap.set("n", "<leader>cj", next_cell, { noremap = true, desc = "Search forward for slime cell delimiter" })
       vim.keymap.set("n", "<leader>cc", "<Plug>SlimeSendCell", { noremap = true, desc = "Send cell to slime" })
 
-      -- slime_use_neovim()
+      slime_use_neovim()
       -- slime_use_tmux()
       -- }}
     end,
