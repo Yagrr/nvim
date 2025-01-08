@@ -1,8 +1,7 @@
 local is_windows = vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
-
 if is_windows then
   --Windows specific settings
-  local win_prefer_git = false
+  require("nvim-treesitter.install").compilers = { "zig", "gcc" }
 end
 
 return {
@@ -17,8 +16,7 @@ return {
         additional_vim_regex_highlighting = false,
       },
 
-      prefer_git = win_prefer_git,
-      compilers = { "zig", "gcc", "clang", "cc", "cl" },
+      prefer_git = false,
 
       ensure_installed = {
         "bash",
@@ -33,8 +31,6 @@ return {
         "python",
         "query",
         "regex",
-        "tsx",
-        "typescript",
         "vim",
         "yaml",
       },
