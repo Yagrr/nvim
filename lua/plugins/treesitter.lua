@@ -1,3 +1,10 @@
+local is_windows = vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
+
+if is_windows then
+  --Windows specific settings
+  local win_prefer_git = false
+end
+
 return {
   -- add more treesitter parsers
   {
@@ -9,6 +16,9 @@ return {
         enable = true,
         additional_vim_regex_highlighting = false,
       },
+
+      prefer_git = win_prefer_git,
+      compilers = { "zig", "gcc", "clang", "cc", "cl" },
 
       ensure_installed = {
         "bash",
