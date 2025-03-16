@@ -6,7 +6,13 @@ return {
     init = function()
       vim.g.slime_last_channel = { nil }
       vim.g.slime_cell_delimiter = "\\s*#\\s*%%"
-      vim.g.slime_paste_file = os.getenv("HOME") .. "/.slime_paste"
+
+      if vim.loop.os_uname().sysname == "Windows_NT" then
+        -- WINDOWS ONLY: setting undodir
+        vim.g.slime_paste_file = os.getenv("USERPROFILE") .. "/.slime_paste"
+      else
+        vim.g.slime_paste_file = os.getenv("HOME") .. "/.slime_paste"
+      end
 
       local function next_cell()
         vim.fn.search(vim.g.slime_cell_delimiter)
