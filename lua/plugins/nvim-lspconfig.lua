@@ -24,10 +24,8 @@ return {
         lua_ls = {},
         pyright = {},
         ruff = {},
-        ruff_lsp = {},
       },
     },
-
     config = function(_, opts)
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       local lspconfig = require("lspconfig")
