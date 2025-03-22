@@ -86,6 +86,7 @@ return {
       end, { desc = "Change Slime target", nargs = "*" })
 
       -- Keybinds
+      -- Usage: Use SlimeConfig to initialise plugin
       vim.keymap.set("n", "<leader>ce", vim.cmd.SlimeSend, { noremap = true, desc = "send line to term" })
       vim.keymap.set("n", "<leader>cv", vim.cmd.SlimeConfig, { noremap = true, desc = "Open slime configuration" })
       vim.keymap.set("x", "<leader>cc", "<Plug>SlimeRegionSend", { noremap = true, desc = "send line to tmux" })
