@@ -1,19 +1,37 @@
 return {
   {
+    -- docs: https://github.com/goerz/jupytext.nvim?tab=readme-ov-file#options
+    "goerz/jupytext.nvim",
+    version = "0.2.0",
+    opts = {
+      format = "py:percent",
+    },
+  },
+
+  {
+    -- docs: https://mmngreco.dev/posts/vim-for-ml/#neovim-for-ml
+    --  https://youtu.be/9PuF36UNOjM
+    -- dependencies:
+    -- a terminal that supports images (kitty)
+    -- ipython
+    -- plotly pdbpp
     "jpalardy/vim-slime",
     enabled = true,
-
     init = function()
       vim.g.slime_last_channel = { nil }
+      -- Use `# %%` to define cells
       vim.g.slime_cell_delimiter = "\\s*#\\s*%%"
 
-      if vim.loop.os_uname().sysname == "Windows_NT" then
+      -- Check if windows or linux since this workflow must use .slime_paste as buffer
+      -- vim.loop.os_uname().sysname depreciated, now replaced with vim.uv
+      if vim.uv.os_uname().sysname == "Windows_NT" then
         -- WINDOWS ONLY: setting undodir
         vim.g.slime_paste_file = os.getenv("USERPROFILE") .. "/.slime_paste"
       else
         vim.g.slime_paste_file = os.getenv("HOME") .. "/.slime_paste"
       end
 
+      -- programme start
       local function next_cell()
         vim.fn.search(vim.g.slime_cell_delimiter)
       end
