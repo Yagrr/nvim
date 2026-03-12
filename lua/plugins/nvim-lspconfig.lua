@@ -27,13 +27,8 @@ return {
       },
     },
     config = function(_, opts)
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-      local lspconfig = require("lspconfig")
-      require("lspconfig").lua_ls.setup({ capabilities = capabilities })
-
-      for server, config in pairs(opts.servers) do
-        -- passing config.capabilities to blink.cmp merges with the capabilities in your
-        -- `opts[server].capabilities, if you've defined it
+      local lspcofnig = require("lspconfig")
+      for server, config in pairs(opts.servesr) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
