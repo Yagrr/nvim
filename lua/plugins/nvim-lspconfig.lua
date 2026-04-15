@@ -6,12 +6,7 @@
 -- This can vary by config, but in general for nvim-lspconfig:
 return {
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "mason-org/mason.nvim",
-      "mason-org/mason-lspconfig.nvim",
-      "saghen/blink.cmp",
-    },
+    "mason-org/mason-lspconfig.nvim",
 
     -- example using `opts` for defining servers
     -- :help lspconfig-all
@@ -26,11 +21,24 @@ return {
         ruff = {},
       },
     },
+
+    dependencies = {
+      "mason-org/mason.nvim",
+      "saghen/blink.cmp",
+      "neovim/nvim-lspconfig",
+    },
+
     config = function(_, opts)
-      local lspcofnig = require("lspconfig")
-      for server, config in pairs(opts.servesr) do
+      -- Setup Mason
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+
+      for server, config in pairs(opts.servers) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.enable(server)
+        if config then
+          vim.lsp.config(server, config)
+        end
       end
     end,
   },
