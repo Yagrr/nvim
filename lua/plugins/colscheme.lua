@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "terafox",
+      colorscheme = "tokyonight-night",
       transparent_background = false,
       integrations = {
         aerial = true,
