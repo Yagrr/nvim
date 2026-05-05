@@ -30,6 +30,9 @@ vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
+-- Disable autoformat on save - See: https://github.com/LazyVim/LazyVim/discussions/141
+vim.g.autoformat = false
+
 -- Disable snacks animation
 vim.g.snacks_animate = false
 
