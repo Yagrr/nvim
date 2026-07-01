@@ -45,6 +45,9 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 
+-- Fix SQL formatter bug
+vim.g.omni_sql_no_default_maps = true
+
 if vim.loop.os_uname().sysname == "Windows_NT" then
   -- WINDOWS ONLY: setting undodir
   vim.opt.undodir = os.getenv("USERPROFILE") .. "/.vim/undodir"
